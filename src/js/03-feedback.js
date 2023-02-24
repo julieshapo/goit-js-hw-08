@@ -12,6 +12,7 @@ formEl.addEventListener('input', throttle(onInputChange, 500))
 
 function onFormSubmit(evt) {
     evt.preventDefault();
+    console.log({ email: emailEl.value, message: messageEl.value })
     evt.currentTarget.reset();
     localStorage.removeItem(LOCAL_STORAGE_KEY);
        
@@ -23,7 +24,6 @@ function onInputChange(evt) {
         email: emailEl.value,
         message: messageEl.value,
     };
-    console.log(formObjectToSave)
     
 localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formObjectToSave))
     
