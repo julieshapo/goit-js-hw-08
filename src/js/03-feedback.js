@@ -7,6 +7,8 @@ const LOCAL_STORAGE_KEY = "feedback-form-state";
 
 populateFormOutput();
 
+const formObjectToSave = {};
+
 formEl.addEventListener('submit', onFormSubmit);
 formEl.addEventListener('input', throttle(onInputChange, 500))
 
@@ -20,12 +22,24 @@ function onFormSubmit(evt) {
 
 function onInputChange(evt) {
 
-    const formObjectToSave = {
-        email: emailEl.value,
-        message: messageEl.value,
-    };
+// First solution
     
+// console.log(evt.target.name)
+// console.log(evt.target.value)
+
+formObjectToSave[evt.target.name] = evt.target.value;
+console.log(formObjectToSave);
+
 localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formObjectToSave))
+
+// Second solution
+
+    // const formObjectToSave = {
+    //     email: emailEl.value,
+    //     message: messageEl.value,
+    // };
+    
+// localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formObjectToSave))
     
 }
 
